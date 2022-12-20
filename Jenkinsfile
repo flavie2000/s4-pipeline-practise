@@ -74,7 +74,7 @@ pipeline {
 	post {
     
     success {
-      slackSend (channel: '#development-alerts', color: 'good', message: "Images  have been pushed to Nexus")
+      slackSend (channel: '#development-alerts', color: 'good', message: "Images  have been pushed to dockerhub")
     }
 
     failure {
