@@ -65,23 +65,9 @@ pipeline {
                 sh '''
                 echo 'Hello World'
                 ls
+		'''
   
-          - permission   ### checking the employee belong to s4 session
-  - cleaning        ### clean the environment
-  - sonarqube   ### test the code using sonarqu
-  - build-dev    ### build image for dev environment only 
-  - build-sanbox ### build image for sanbox environment only 
-  - build-prod  ### build image for prod environment only 
-  - login       ### login to company dockerhub account
-  - push-to-dockerhub-dev   ### push image for dev environment only 
-  - push-to-dockerhub-sanbox   ### push image sandbox  dev environment only 
-  - push-to-dockerhub-prod       ### push image for prod  environment only 
-  - update helm charts-sanbox   ### update values file  for prod  environment only 
-  - update helm charts-dev        ### update values file  for dev  environment only 
-  - update helm charts-prod    ### update values file  for test  environment only 
-  - wait for argocd      ### waiting for argocd to detect the change 
-  - post build report (success, unstable, failure) on slack  development-alerts channel  and clean directory    ### 
- 
+         
         stage('permission') {
             steps {
                 sh '''
@@ -215,7 +201,7 @@ pipeline {
                 pwd
                 '''
             }
-        }                            '''
+        }                           
                 
             }
         }
