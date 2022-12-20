@@ -71,5 +71,17 @@ pipeline {
             }
         }
     }
+	post {
+    
+    success {
+      slackSend (channel: '#development-alerts', color: 'good', message: "Images  have been pushed to Nexus")
+    }
+
+    failure {
+      slackSend (channel: '#development-alerts', color: '#FF0000', message: "FAILURE: Images  have NOT been pushed to Nexus")
+    }
+}
+	
+	
 }
 
