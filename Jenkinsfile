@@ -60,7 +60,7 @@ pipeline {
             }
         }
  
-        stage('Hello') {
+          stage('Hello') {
             steps {
                 sh '''
                 echo 'Hello World'
@@ -68,7 +68,7 @@ pipeline {
 		'''
   
          
-        stage('permission') {
+          stage('permission') {
             steps {
                 sh '''
                 ls 
@@ -77,7 +77,7 @@ pipeline {
             }
         }
 
-        stage('cleaning') {
+          stage('cleaning') {
             steps {
                 sh '''
                 ls 
@@ -86,7 +86,7 @@ pipeline {
             }
         }
 
-        stage('sonarqube') {
+          stage('sonarqube') {
             steps {
                 sh '''
                 ls 
@@ -95,7 +95,7 @@ pipeline {
             }
         }
 
-        stage('build-dev') {
+          stage('build-dev') {
             steps {
                 sh '''
                 ls 
@@ -104,7 +104,7 @@ pipeline {
             }
         } 
 
-        stage('build-sanbox') {
+          stage('build-sanbox') {
             steps {
                 sh '''
                 ls 
@@ -113,7 +113,7 @@ pipeline {
             }
         }
 
-        stage('build-prod') {
+          stage('build-prod') {
             steps {
                 sh '''
                 ls 
@@ -122,7 +122,7 @@ pipeline {
             }
         }
 
-        stage('login') {
+          stage('login') {
             steps {
                 sh '''
                 ls 
@@ -131,7 +131,7 @@ pipeline {
             }
         }
 
-        stage('push-to-dockerhub-dev') {
+          stage('push-to-dockerhub-dev') {
             steps {
                 sh '''
                 ls 
@@ -140,7 +140,7 @@ pipeline {
             }
         }  
 
-        stage('push-to-dockerhub-sanbox') {
+          stage('push-to-dockerhub-sanbox') {
             steps {
                 sh '''
                 ls 
@@ -149,7 +149,7 @@ pipeline {
             }
         }
 
-        stage('push-to-dockerhub-prod') {
+          stage('push-to-dockerhub-prod') {
             steps {
                 sh '''
                 ls 
@@ -158,7 +158,7 @@ pipeline {
             }
         }
 
-        stage('update helm charts-sanbox') {
+          stage('update helm charts-sanbox') {
             steps {
                 sh '''
                 ls 
@@ -167,7 +167,7 @@ pipeline {
             }
         } 
 
-        stage('update helm charts-dev') {
+          stage('update helm charts-dev') {
             steps {
                 sh '''
                 ls 
@@ -176,7 +176,7 @@ pipeline {
             }
         }
 
-        stage('update helm charts-prod') {
+          stage('update helm charts-prod') {
             steps {
                 sh '''
                 ls 
@@ -185,7 +185,7 @@ pipeline {
             }
         }
 
-        stage('wait for argocd') {
+          stage('wait for argocd') {
             steps {
                 sh '''
                 ls 
@@ -194,7 +194,7 @@ pipeline {
             }
         }
 
-        stage('post build report') {
+          stage('post build report') {
             steps {
                 sh '''
                 ls 
