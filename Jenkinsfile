@@ -30,29 +30,29 @@ options {
                             ),
 
                           string(
-                            defaultValue: 'eric-001',
-                            name: 'DB-Tag',
+                            defaultValue: 'v1.0.0',
+                            name: 'DBTag',
 			                description: 'Required to enter the image tag',
                             trim: true
                             ),
 
                           string(
-                            defaultValue: 'eric-001',
-                            name: 'UI-Tag',
+                            defaultValue: 'v1.0.0',
+                            name: 'UITag',
 			                description: 'Required to enter the image tag',
                             trim: true
                             ),
 
                           string(
-                            defaultValue: 'eric-001',
-                            name: 'WEATHER-Tag',
+                            defaultValue: 'v1.0.0',
+                            name: 'WEATHERTag',
 			                description: 'Required to enter the image tag',
                             trim: true
                             ),
 
                           string(
-                            defaultValue: 'eric-001',
-                            name: 'AUTH-Tag',
+                            defaultValue: 'v1.0.0',
+                            name: 'AUTHTag',
 			                description: 'Required to enter the image tag',
                             trim: true
                             ),
@@ -62,25 +62,25 @@ options {
             }
         }
  
-        stage('permission') {
+stage('permission') {
             steps {
                 sh '''
-		cat permission.txt | grep -o $USER
-                echo $?
+cat permission.txt | grep -o $USER
+echo $?
+
                 '''
             }
         }
-
+	    
         stage('cleaning') {
             steps {
                 sh '''
                 ls 
-                pwd
                 '''
             }
         }
 
-                stage('SonarQube analysis') {
+    stage('SonarQube analysis') {
             agent {
                 docker {
                   image 'sonarsource/sonar-scanner-cli:4.7.0'
@@ -97,23 +97,21 @@ options {
                 }
             }
         }
-              
-        
 
         stage('build-dev') {
             steps {
                 sh '''
 cd UI
-docker build -t devopseasylearning2021/s4-ui:$UITag .
+docker build -t devopseasylearning2021/s4-ui:${BUILDING-NUMBER}$UITag .
 cd -
 cd DB
-docker build -t devopseasylearning2021/s4-db:$DBTag .
+docker build -t devopseasylearning2021/s4-db:${BUILDING-NUMBER}$DBTag .
 cd -
 cd auth 
-docker build -t devopseasylearning2021/s4-auth:$AUTHTag .
+docker build -t devopseasylearning2021/s4-auth:${BUILDING-NUMBER}$AUTHTag .
 cd -
 cd weather 
-docker build -t devopseasylearning2021/s4-weather:$WEATHERTag .
+docker build -t devopseasylearning2021/s4-weather:${BUILDING-NUMBER}$WEATHERTag .
 cd -
                 '''
             }
