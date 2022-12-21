@@ -99,39 +99,71 @@ echo $?
         }
 
         stage('build-dev') {
+         when{ 
+          expression {
+            env.Environment == 'DEV' }
+            }
             steps {
                 sh '''
 cd UI
-docker build -t devopseasylearning2021/s4-ui:${BUILDING-NUMBER}$UITag .
+docker build -t devopseasylearning2021/s4-ui:${BUILD_NUMBER}$UITag .
 cd -
 cd DB
-docker build -t devopseasylearning2021/s4-db:${BUILDING-NUMBER}$DBTag .
+docker build -t devopseasylearning2021/s4-db:${BUILD_NUMBER}$DBTag .
 cd -
 cd auth 
-docker build -t devopseasylearning2021/s4-auth:${BUILDING-NUMBER}$AUTHTag .
+docker build -t devopseasylearning2021/s4-auth:${BUILD_NUMBER}$AUTHTag .
 cd -
 cd weather 
-docker build -t devopseasylearning2021/s4-weather:${BUILDING-NUMBER}$WEATHERTag .
+docker build -t devopseasylearning2021/s4-weather:${BUILD_NUMBER}$WEATHERTag .
 cd -
                 '''
             }
         }
 
         stage('build-sanbox') {
+          when{ 
+              expression {
+                env.Environment == 'SANBOX' }
+                }
             steps {
                 sh '''
-                ls 
-                pwd
+cd UI
+docker build -t devopseasylearning2021/s4-ui:${BUILD_NUMBER}$UITag .
+cd -
+cd DB
+docker build -t devopseasylearning2021/s4-db:${BUILD_NUMBER}$DBTag .
+cd -
+cd auth 
+docker build -t devopseasylearning2021/s4-auth:${BUILD_NUMBER}$AUTHTag .
+cd -
+cd weather 
+docker build -t devopseasylearning2021/s4-weather:${BUILD_NUMBER}$WEATHERTag .
+cd -
                 '''
             }
         }
 
 
         stage('build-prod') {
+          when{ 
+              expression {
+                env.Environment == 'PROD' }
+                }
             steps {
                 sh '''
-                ls 
-                pwd
+cd UI
+docker build -t devopseasylearning2021/s4-ui:${BUILD_NUMBER}$UITag .
+cd -
+cd DB
+docker build -t devopseasylearning2021/s4-db:${BUILD_NUMBER}$DBTag .
+cd -
+cd auth 
+docker build -t devopseasylearning2021/s4-auth:${BUILD_NUMBER}$AUTHTag .
+cd -
+cd weather 
+docker build -t devopseasylearning2021/s4-weather:${BUILD_NUMBER}$WEATHERTag .
+cd -
                 '''
             }
         }
