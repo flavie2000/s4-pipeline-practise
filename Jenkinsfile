@@ -114,7 +114,7 @@ docker build -t devopseasylearning2021/s4-auth:$AUTHTag .
 cd -
 cd weather 
 docker build -t devopseasylearning2021/s4-weather:$WEATHERTag .
-cd -  
+cd -
                 '''
             }
         }
