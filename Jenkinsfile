@@ -23,7 +23,7 @@ options {
                                 ),
 
                           string(
-                            defaultValue: 's4user',
+                            defaultValue: 's4user1',
                             name: 'User',
 			                description: 'Required to enter your name',
                             trim: true
