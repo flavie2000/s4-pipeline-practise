@@ -18,13 +18,13 @@ options {
                         parameters([    
                         
                         choice(
-                            choices: ['Dev', 'Sanbox','Prod'], 
+                            choices: ['DEV', 'SANBOX','PROD'], 
                             name: 'Environment'   
                                 ),
 
                           string(
-                            defaultValue: 's4user1',
-                            name: 'User',
+                            defaultValue: 's4user',
+                            name: 'USER',
 			                description: 'Required to enter your name',
                             trim: true
                             ),
@@ -67,8 +67,7 @@ options {
                 sh '''
 cat <<EOF > check.sh
 #! /bin/bash 
-USER=${User}
-cat permission.txt | grep -i $USER
+cat permission.txt | grep -O $USER
 if 
 [[ $? -eq 0 ]]
 then 
